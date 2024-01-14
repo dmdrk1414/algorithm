@@ -26,5 +26,4 @@ for _ in range(H):
             graph_one.append(0)
     graph.append(graph_one)
 
-for _ in range(H + 1):
-    
+

@@ -1,14 +1,13 @@
-# https://www.acmicpc.net/problem/14217
-
 import sys
 from collections import deque
+
+# https://www.acmicpc.net/problem/14217
 
 input = sys.stdin.readline
 
 n, m = map(int, input().split())
 INF = 9999
 L = [[0] * (n + 1) for _ in range(n + 1)]
-
 
 for _ in range(m):
     a, b = map(int, input().split())
@@ -17,23 +16,27 @@ for _ in range(m):
 
 q = int(input())
 
+print("   0, 1, 2, 3, 4, 5 ")
+for idx,  l in enumerate(L):
+    print(idx, end=" ")
+    print(l)
 
 def bfs(start):
     que = deque([start])
     visited = [False] * (n + 1)
-    distance = [INF] * (n + 1)
-    distance[0] = 0
+    distance = [INF for _ in range (n + 1)]
+    visited[start[0]] = True
+    distance[start[0]] = start[1]
 
     while que:
         value, path = que.popleft()
-        visited[value] = True
-        if (distance[value] > path):
+        if distance[value] > path:
             distance[value] = path
 
-        for i in range(len(L[value])):
-            if (L[value][i] == 1 and visited[i] == False):
-                que.append([i, distance[value] + 1])
-                visited[i] = True
+        for idx in range(len(L[value])):
+            if L[value][idx] == 1 and not visited[idx]:
+                que.append([i, path + 1])
+                visited[idx] = True
         return distance
 
 
@@ -48,7 +51,7 @@ for _ in range(q):
     distance = bfs([1, 0])
 
     for i in range(1, n+1):
-        if (distance[i] == INF):
+        if distance[i] == INF:
             print(-1, end=" ")
         else:
             print(distance[i], end=" ")
