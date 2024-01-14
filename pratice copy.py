@@ -1,51 +1,52 @@
 import sys
 from collections import deque
 
-input = sys.stdin.readline
-INF = 9999;
-
-# 첫째 줄에는 도시의 개수 n,도로의 개수 m이 주어진다.
-n, m = map(int, input().split())
-L = [[0] * (n + 1) for _ in range(n + 1)]
-
-# 다음 m개의 줄에는 두 도시가 주어진다.(2≤n≤500,1≤m≤n*(n-1)/2)
-for _ in range (m):
-    a, b = map(int, input().split())
-    L[a][b] = 1
-    L[b][a] = 1
-
-q = int(input())
+def dfs(start):
+    visited[start] = True
+    print(start, end=" ")
+    for value in graph[start]:
+        if not visited[value]:
+             dfs(value)
 
 def bfs(start):
+    visited[start] = True
     que = deque([start])
-    visited = [False for _ in range(n + 1)]
-    distance = [INF for _ in range(n + 1)]
-    visited[start[0]] = True
-    distance[start[0]] = start[1]
 
     while que:
-        value, path = que.popleft()
-        if(distance[value] > path):
-            distance[value] = path
-        for idx in range(len(L[value])):
-            if not visited[idx] and L[value][idx] == 1:
-                que.append([idx, distance[value] + 1])
+        value = que.popleft()
+        print(value, end=" ")
+
+        for idx in graph[value]:
+            if not visited[idx]:
+                que.append(idx)
                 visited[idx] = True
-    return distance
-for _ in range(q):
-    check, a, b = map(int, input().split())
-    if check == 1:
-        L[a][b] = 1
-        L[b][a] = 1
-    else :
-        L[a][b] = 0
-        L[b][a] = 0
 
-    distance = bfs([1, 0])
+N, M, V = map(int, input().split())
+graph = [[] for _ in range(N+1)]
+for _ in range(N+1):
+    a, b = map(int, input().split())
+    graph[a].append(b)
+    graph[b].append(a)
 
-    for inx in range (1, n + 1):
-        if distance[inx] == INF:
-            print("-1", end=" ")
-        else:
-            print(distance[inx], end=" ")
-    print()
+visited = [False for _ in range(N+1)]
+dfs(V)
+print()
+
+visited = [False for _ in range(N+1)]
+bfs(V)
+"""
+https://www.acmicpc.net/problem/1260
+
+입력
+4 5 1
+1 2
+1 3
+1 4
+2 4
+3 4
+
+
+출력
+dfs: 1 2 4 3
+bfs: 1 2 3 4
+"""
