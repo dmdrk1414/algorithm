@@ -16,10 +16,10 @@ for _ in range(m):
 
 q = int(input())
 
-print("   0, 1, 2, 3, 4, 5 ")
-for idx,  l in enumerate(L):
-    print(idx, end=" ")
-    print(l)
+# print("   0, 1, 2, 3, 4, 5 ")
+# for idx,  l in enumerate(L):
+#     print(idx, end=" ")
+#     print(l)
 
 def bfs(start):
     que = deque([start])
@@ -35,9 +35,9 @@ def bfs(start):
 
         for idx in range(len(L[value])):
             if L[value][idx] == 1 and not visited[idx]:
-                que.append([i, path + 1])
+                que.append([idx, distance[value] + 1])
                 visited[idx] = True
-        return distance
+    return distance
 
 
 for _ in range(q):
