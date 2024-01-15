@@ -1,39 +1,44 @@
 import sys
 from collections import deque
 
-def dfs(start):
-    visited[start] = True
-    print(start, end=" ")
-    for value in graph[start]:
-        if not visited[value]:
-             dfs(value)
+input = sys.stdin.readline
 
 def bfs(start):
-    visited[start] = True
     que = deque([start])
+    visited[start] = True
 
     while que:
         value = que.popleft()
         print(value, end=" ")
 
-        for idx in graph[value]:
+        for idx in (graph[value]):
             if not visited[idx]:
-                que.append(idx)
                 visited[idx] = True
+                que.append(idx)
 
-N, M, V = map(int, input().split())
-graph = [[] for _ in range(N+1)]
-for _ in range(N+1):
+def dfs(start):
+    visited[start] = True
+    print(start, end=" ")
+
+    for value in (graph[start]):
+        if not visited[value]:
+            dfs(value)
+
+n, m, v = map(int, input().split())
+graph = [[] for _ in range(n+1)]
+
+for _ in range(m):
     a, b = map(int, input().split())
     graph[a].append(b)
     graph[b].append(a)
 
-visited = [False for _ in range(N+1)]
-dfs(V)
+visited = [False for _ in range(n+1)]
+bfs(v)
 print()
 
-visited = [False for _ in range(N+1)]
-bfs(V)
+visited = [False for _ in range(n+1)]
+dfs(v)
+
 """
 https://www.acmicpc.net/problem/1260
 
