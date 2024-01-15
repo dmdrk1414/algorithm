@@ -56,15 +56,29 @@ nomal = True
 color = False
 
 def bfs(start):
-    visited_nomal[start[0], start[1]] = True
+    visited_nomal[start[0]] [start[1]] = True
     que = deque([start])
+    color = graph[start[0]][start[1]]
+    count = 1
     while que:
+        y_before, x_before = que.popleft()
 
         for i in range (len(dx)):
-            x_value =
+            y_value = y_before + dy[i]
+            x_value = x_before + dx[i]
 
+            if y_value < 0 or y_value >= N or x_value < 0 or x_value >= N:
+                continue
+            if not visited_nomal[y_value][x_value] and color == graph[y_value][x_value]:
+                visited_nomal[y_value][x_value] = True
+                que.append([y_value, x_value])
+                count += 1
+    return count
+
+paint = []
 for y_id in range (N):
     for x_id in range (N):
-        bfs([y_id, x_id])
-
+        paint.append(bfs([y_id, x_id]))
+print(len(paint))
+print(paint)
 
