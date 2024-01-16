@@ -1,58 +1,41 @@
+
+
+"""
+4 6
+0 0 0 0 0 0
+1 0 0 0 0 2
+1 1 1 0 0 2
+0 0 0 0 0 2
+
+
+"""
 import sys
 from collections import deque
+import copy
+from itertools import combinations
 
-"""
-5 3
-1 2
-1 3
-2 4
-5
-2 3
-4 5
-3 4
-1 4
-1 5
-
-
-"""
-def bfs(start):
-    que = deque([start])
-    visited = [False for _ in range(N + 1)]
-    visited[start[0]] = True
-
-    while que:
-        value, path = que.popleft()
-        if(distanse[value] > path):
-            distanse[value] = path
-
-        for idx in range(len(L[value])):
-            if not visited[idx] and L[value][idx] == 1:
-                visited[idx] = True
-                que.append([idx, distanse[value] + 1])
+input = sys.stdin.readline
 
 N, M = map(int, input().split())
-L = [[0] * (N + 1) for _ in range(N + 1)]
-INF = 9999
-distanse = [INF for _ in range(N + 1)]
-distanse[1] = 0
-for _ in range(M):
-    a, b = map(int, input().split())
-    L[a][b] = 1
-    L[b][a] = 1
-q = int(input())
+board = [list(map(int, input().split())) for _ in range(N)]
+virus = []
+safe_zone = []
 
-for _ in range(q):
-    target_1, target_2 = map(int, input().split())
-    L[target_1][target_2] = 1
-    L[target_2][target_1] = 1
+for y in range(N):
+    for x in range(M):
+        if board[y][x] == 0:
+            safe_zone.append([y, x])
+        if board[y][x] == 2:
+            virus.append([y, x])
 
-    bfs([1, 0])
+def bfs():
+    ch_virus = deque([])
+    cnt = len()
+    for y, x in virus:
+        ch_virus.append([y, x])
 
-    for idx in range(1, N + 1):
-        if distanse[idx] == INF:
-            print(-1, end=" ")
-        else:
-            print(distanse[idx], end=" ")
-    print()
-
-
+for comb in combinations(virus, 3):
+    ch_board = copy.deepcopy(board)
+    for y, x in comb:
+        ch_board[y][x] = 1
+    bfs()
