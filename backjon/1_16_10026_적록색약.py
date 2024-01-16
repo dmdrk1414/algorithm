@@ -50,16 +50,14 @@ graph = [list(input().rstrip()) for _ in range(N)]
 dx = [-1, 1, 0, 0]
 dy = [0,0, -1, 1]
 
-visited_nomal = [[False] * (N) for _ in range(N)]
-visited_color = [[False] * (N) for _ in range(N)]
+visited = [[False] * (N) for _ in range(N)]
 nomal = True
 color = False
 
 def bfs(start):
-    visited_nomal[start[0]] [start[1]] = True
+    visited[start[0]] [start[1]] = True
     que = deque([start])
     color = graph[start[0]][start[1]]
-    count = 1
     while que:
         y_before, x_before = que.popleft()
 
@@ -69,16 +67,31 @@ def bfs(start):
 
             if y_value < 0 or y_value >= N or x_value < 0 or x_value >= N:
                 continue
-            if not visited_nomal[y_value][x_value] and color == graph[y_value][x_value]:
-                visited_nomal[y_value][x_value] = True
+            if not visited[y_value][x_value] and color == graph[y_value][x_value]:
+                visited[y_value][x_value] = True
                 que.append([y_value, x_value])
-                count += 1
-    return count
 
 paint = []
+count = 0;
 for y_id in range (N):
     for x_id in range (N):
-        paint.append(bfs([y_id, x_id]))
-print(len(paint))
-print(paint)
+        if not visited[y_id][x_id]:
+            bfs([y_id, x_id])
+            count += 1
+
+for y_id in range (N):
+    for x_id in range (N):
+        if graph[y_id][x_id] == "G":
+            graph[y_id][x_id] = "R"
+
+visited = [[False] * (N) for _ in range(N)]
+count_not = 0;
+for y_id in range (N):
+    for x_id in range (N):
+        if not visited[y_id][x_id]:
+            bfs([y_id, x_id])
+            count_not += 1
+
+print(count)
+print(count_not)
 
