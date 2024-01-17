@@ -28,28 +28,36 @@
 """
 from collections import deque
 import sys
-
 input = sys.stdin.readline
-N, M, K, X = map(int, input().split())
+N, M, K, V = map(int, input().split())
+graph=[[] for _ in range(N + 1)]
 visited = [False for _ in range(N + 1)]
-distance = [0 for _ in range(N + 1)]
-graph = [[] for _ in range(N + 1)]
+distant = [0 for _ in range(N + 1)]
+answer = []
+
 for _ in range(M):
     y, x = map(int, input().split())
     graph[y].append(x)
 
 def bfs(start):
-    answer = []
-    q = deque([start])
+    que = deque([start])
     visited[start] = True
-    distance[start] = 0
-    while q:
-        now = q.popleft()
-        for i in graph[now]:
+    distant[start] = 0
+    while que:
+        value = que.popleft()
+        for i in (graph[value]):
             if not visited[i]:
                 visited[i] = True
-                q.append(i)
-                distance[i] = distance[now] + 1
-                if distance[i] == K:
+                que.append(i)
+                distant[i] = distant[value] + 1
+                if(K == distant[i]):
                     answer.append(i)
-bfs(X)
+    if(len(answer) == 0):
+        print(-1)
+    else:
+        answer.sort()
+        for result in answer:
+            print(result)
+bfs(V)
+
+
