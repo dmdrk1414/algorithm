@@ -26,41 +26,30 @@
 
 
 """
-import sys
 from collections import deque
+import sys
+
 input = sys.stdin.readline
-
 N, M, K, X = map(int, input().split())
-INF = 9999
-L = [[INF] * (N + 1) for _ in range(N + 1)]
-searchList = []
-
+visited = [False for _ in range(N + 1)]
+distance = [0 for _ in range(N + 1)]
+graph = [[] for _ in range(N + 1)]
 for _ in range(M):
     y, x = map(int, input().split())
-    L[y][x] = 1
-    L[x][y] = 1
-visited = [[False] * (N + 1) for _ in range(N + 1)]
-dx = [-1, 1, 0, 0]
-dy = [0, 0, -1, 1]
+    graph[y].append(x)
+
 def bfs(start):
-    que = deque()
-    que.append([start, start])
-    count = 0;
-    visited[start][start] = True
-
-    while que:
-        yy, xx = que.popleft()
-        if count == K:
-            searchList.append([yy, xx])
-        for i in range(len(dx)):
-            ny = yy + dy[i]
-            nx = xx + dx[i]
-
-            if (0 < ny <= N and 0 < nx <= N):
-                if L[ny][nx] == 1 and not visited[ny][nx]:
-                    visited[ny][nx] = True
-                    que.append([ny, nx])
-                    count += 1
-
+    answer = []
+    q = deque([start])
+    visited[start] = True
+    distance[start] = 0
+    while q:
+        now = q.popleft()
+        for i in graph[now]:
+            if not visited[i]:
+                visited[i] = True
+                q.append(i)
+                distance[i] = distance[now] + 1
+                if distance[i] == K:
+                    answer.append(i)
 bfs(X)
-print(searchList)
