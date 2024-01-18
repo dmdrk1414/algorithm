@@ -73,7 +73,7 @@ def bfs():
         for i in range(len(dices)):
             afterStand = stand + dices[i]
 
-            if afterStand <= 100 and not visited[afterStand]:
+            if 0< afterStand <= 100 and not visited[afterStand]:
                 if afterStand in ladder.keys():
                     afterStand = ladder[afterStand]
 
