@@ -46,8 +46,15 @@ import sys
 input = sys.stdin.readline
 
 N, M = map(int, input().split())
-label = [list(map(int, input().split())) for _ in range(N)]
-snake = [list(map(int, input().split())) for _ in range(M)]
+
+snack = dict()
+ladder = dict()
+for _ in range(N):
+    i,j = map(int,input().split())
+    ladder[i] = j
+for _ in range(M):
+    i,j = map(int,input().split())
+    snack[i] = j
 
 dices = [1, 2, 3, 4, 5, 6]
 visited = [False for _ in range(100 + 1)]
@@ -65,13 +72,12 @@ def bfs():
             break
         for i in range(len(dices)):
             afterStand = stand + dices[i]
-            if afterStand <= 100:
-                for la in (label):
-                    if afterStand == la[0]:
-                        afterStand = la[1]
-                for sna in (snake):
-                    if afterStand == sna[0]:
-                        afterStand = sna[1]
+            if afterStand <= 100 and not visited[afterStand]:
+                if afterStand in ladder.keys():
+                    afterStand = ladder[afterStand]
+
+                if afterStand in snack.keys():
+                    afterStand = snack[afterStand]
                 visited[afterStand] = True
                 counts[afterStand] = min(counts[afterStand], counts[stand] + 1)
                 que.append(afterStand)
