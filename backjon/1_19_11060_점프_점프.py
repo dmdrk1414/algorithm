@@ -13,25 +13,22 @@ input = sys.stdin.readline
 
 N = int(input())
 graph = list(map(int, input().split()))
-
-if N == 1:
+if(N == 1):
     print(0)
 else:
-    # bfs
-    distance = [0] * (N + 1)
-    queue = deque([1])
+    que = deque([1])
+    distance = [0 for _ in range(N + 1)]
+    while que:
+        x = que.popleft()
 
-    while queue:
-        x = queue.popleft()
-        if x + graph[x-1] >= N:
+        if (x + graph[x - 1]) >= N:
             print(distance[x] + 1)
             break
-        for i in range(1, graph[x-1]+1):
-            nx = x+i
+
+        for i in range(1, graph[x - 1] + 1):
+            nx = x + i
             if distance[nx] == 0:
-                queue.append(nx)
+                que.append(nx)
                 distance[nx] = distance[x] + 1
-                if(nx >= N):
-                    print(distance[x])
     else:
         print(-1)
