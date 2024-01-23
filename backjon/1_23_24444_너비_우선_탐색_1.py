@@ -15,7 +15,6 @@ N개의 정점과 M개의 간선으로 구성된 무방향 그래프(undirected 
 2 4
 3 4
 
-
 """
 import sys
 from collections import deque
