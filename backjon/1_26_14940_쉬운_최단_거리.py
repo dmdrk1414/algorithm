@@ -7,7 +7,7 @@ graph = [list(map(int, input().split())) for _ in range(n)]
 visited = [[False] * (m) for _ in range(n)]
 start = ()
 distance = [[-1] * (m) for _ in range(n)]
-
+ 
 for y in range(n):
     for x in range(m):
         if graph[y][x] == 2:
