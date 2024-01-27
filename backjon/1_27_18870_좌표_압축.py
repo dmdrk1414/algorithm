@@ -1,4 +1,4 @@
-# https://www.acmicpc.net/problem/1764
+# https://www.acmicpc.net/problem/18870
 
 """
 수직선 위에 N개의 좌표 X1, X2, ..., XN이 있다. 이 좌표에 좌표 압축을 적용하려고 한다.
