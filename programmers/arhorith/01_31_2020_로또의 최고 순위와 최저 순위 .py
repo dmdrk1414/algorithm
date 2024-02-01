@@ -29,3 +29,24 @@ def solution(lottos, win_nums):
         answer.append(state[count])
 
     return answer
+
+
+def solution(lottos, win_nums):
+    rank = [6, 6, 5, 4, 3, 2, 1]
+
+    cnt_0 = lottos.count(0)
+    ans = 0
+    for x in win_nums:
+        ans += lottos.count(x)
+    return rank[cnt_0 + ans], rank[ans]
+
+
+def solution(lottos, win_nums):
+    state = [6, 6, 5, 4, 3, 2, 1]
+    count = 0
+    zero = lottos.count(0)
+
+    for win in win_nums:
+        count += lottos.count(win)
+
+    return state[count + zero], state[count]
