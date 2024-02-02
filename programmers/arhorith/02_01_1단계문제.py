@@ -66,3 +66,13 @@ print(num_list[::3])
 print(num_list[::-1])
 print(num_list[1::])
 print(num_list[2::-1])
+
+
+# 배열 원소의 길이
+def solution7(strlist):
+    answer = list(map(len, strlist))
+    return answer
+
+
+def solution7(strlist):
+    return [len(str) for str in strlist]
