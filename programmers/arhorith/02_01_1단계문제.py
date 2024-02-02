@@ -70,8 +70,7 @@ print(num_list[2::-1])
 
 # 배열 원소의 길이
 def solution7(strlist):
-    answer = list(map(len, strlist))
-    return answer
+    return list(map(len, strlist))
 
 
 def solution7(strlist):
