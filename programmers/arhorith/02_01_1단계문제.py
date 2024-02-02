@@ -23,6 +23,11 @@ solution2 = lambda num1, num2: num1 % num2
 
 
 # 두수의 합
-def solution(num1, num2):
+def solution_3(num1, num2):
     # return num1 + num2
     return sum([num1, num2])
+
+
+# 짝수의 합
+def solution_4(n):
+    return sum([i for i in range(2, n + 1, 2)])
