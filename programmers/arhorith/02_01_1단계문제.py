@@ -20,3 +20,9 @@ def solution_1_3(num1, num2):
 
 # 나머지 구하기
 solution2 = lambda num1, num2: num1 % num2
+
+
+# 두수의 합
+def solution(num1, num2):
+    # return num1 + num2
+    return sum([num1, num2])
