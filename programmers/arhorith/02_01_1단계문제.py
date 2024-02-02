@@ -75,3 +75,9 @@ def solution7(strlist):
 
 def solution7(strlist):
     return [len(str) for str in strlist]
+
+
+# swap 함수 구현
+players = ["mumu", "soe", "poe", "kai", "mine"]
+c = 3
+players[c - 1], players[c] = players[c], players[c - 1]
