@@ -47,3 +47,22 @@ def solution_5(array, height):
     array.append(height)
     array.sort(reverse=True)
     return array.index(height)
+
+
+# 배열 reverse
+def solution_6(num_list):
+    return num_list[::-1]
+
+
+def solution_6(num_list):
+    num_list.reverse()
+    return num_list
+
+
+num_list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+print(num_list[::-1])
+print(num_list[::3])
+print(num_list[::-1])
+print(num_list[1::])
+print(num_list[2::-1])
