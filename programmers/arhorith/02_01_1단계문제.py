@@ -16,3 +16,7 @@ def solution_1_2(num1, num2):
 
 def solution_1_3(num1, num2):
     return divmod(num1, num2)[0]
+
+
+# 나머지 구하기
+solution2 = lambda num1, num2: num1 % num2
