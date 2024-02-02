@@ -35,3 +35,15 @@ def solution_4(n):
 
 def solution_4(n):
     return sum([i for i in range(n + 1) if (i % 2) == 0])
+
+
+# 머쓱이보다 키 큰사람
+def solution_5(array, height):
+    return len([i for i in array if height < i])
+    return sum(1 for a in array if a > height)
+
+
+def solution_5(array, height):
+    array.append(height)
+    array.sort(reverse=True)
+    return array.index(height)
