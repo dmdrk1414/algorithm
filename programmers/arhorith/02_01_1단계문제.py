@@ -31,3 +31,7 @@ def solution_3(num1, num2):
 # 짝수의 합
 def solution_4(n):
     return sum([i for i in range(2, n + 1, 2)])
+
+
+def solution_4(n):
+    return sum([i for i in range(n + 1) if (i % 2) == 0])
