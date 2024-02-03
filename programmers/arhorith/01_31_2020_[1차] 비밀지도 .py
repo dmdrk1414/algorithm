@@ -21,3 +21,9 @@ def solution(n, arr1, arr2):
         result.append(binary)
     answer = result
     return answer
+
+
+dic = {2: 10, 9: 15, 10: 5}
+andage = [5, 1, 5]
+if 5 in andage:
+    print(5)
