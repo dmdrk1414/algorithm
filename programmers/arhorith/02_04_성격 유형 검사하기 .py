@@ -12,6 +12,7 @@ def solution(survey, choices):
         "A": 6,
         "N": 7
     }
+    
     score_person = [0] * 8
     persons = ["R", "T", "C", "F", "J", "M", "A", "N"]
     score_dic = {
