@@ -5,6 +5,7 @@ def tenFromtwo(arr):
     for num in arr:
         binaryNum = str(bin(num))
         result.append(binaryNum)
+
     return result
 
 
