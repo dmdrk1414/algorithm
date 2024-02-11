@@ -49,7 +49,7 @@ def solution_5(array, height):
     return array.index(height)
 
 
-# 배열 reverse
+# 배열 revers
 def solution_6(num_list):
     return num_list[::-1]
 
