@@ -17,8 +17,7 @@ def solution(today, terms, privacies):
         privaciesPriod, nameType = privacy.split()
         privacieTotalDay = time_convert(privaciesPriod) + term_dict[nameType]
         if privacieTotalDay <= todayTotal:
-            answer.append(idx+1)
-
+            answer.append(idx + 1)
     return answer
 
 
