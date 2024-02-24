@@ -10,11 +10,10 @@ A를 B로 바꾸는데 필요한 연산의 최솟값을 구해보자.
 
 2 162
 2 → 4 → 8 → 81 → 162
-
-5
 """
 import sys
 from collections import deque
+
 input = sys.stdin.readline
 
 A, B = map(int, input().split())
@@ -26,7 +25,7 @@ while que:
     if a == B:
         print(count)
         break
-    que.append([int(str(a) + "1"), count+1])
+    que.append([int(str(a) + "1"), count + 1])
     que.append([a * 2, count + 1])
 else:
     print(-1)
