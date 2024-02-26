@@ -25,6 +25,7 @@ while que:
     if a == B:
         print(count)
         break
+        
     que.append([int(str(a) + "1"), count + 1])
     que.append([a * 2, count + 1])
 else:
