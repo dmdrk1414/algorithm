@@ -29,15 +29,14 @@ N, M = map(int, input().split())
 listen = set()
 look = set()
 result = []
-
 for _ in range(N):
-    listen.add(input())
+  listen.add(input())
 for _ in range(M):
-    look.add(input())
+  look.add(input())
 
 result = sorted(list(listen & look))
 
 print(len(result))
 
 for resu in result:
-    print(resu)
+  print(resu)
