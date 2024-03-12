@@ -22,8 +22,6 @@ obama
 baesangwook
 ohhenrie
 clinton
-
-
 """
 N, M = map(int, input().split())
 listen = set()
