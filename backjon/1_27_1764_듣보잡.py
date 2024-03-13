@@ -31,7 +31,6 @@ for _ in range(N):
   listen.add(input())
 for _ in range(M):
   look.add(input())
-
 result = sorted(list(listen & look))
 
 print(len(result))
