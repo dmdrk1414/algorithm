@@ -32,7 +32,6 @@ for _ in range(N):
 for _ in range(M):
   look.add(input())
 result = sorted(list(listen & look))
-
 print(len(result))
 
 for resu in result:
