@@ -17,6 +17,7 @@ def solution(numbers, target):
     for leaf in leaves:
         if leaf == target:
             answer += 1
+
     return answer
 
 
