@@ -18,6 +18,7 @@ N+2째 줄부터 보도 못한 사람의 이름이 순서대로 주어진다.
 ohhenrie
 charlie
 baesangwook
+
 obama
 baesangwook
 ohhenrie
